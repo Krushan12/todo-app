@@ -11,7 +11,12 @@ const TaskList = () => {
   const fetchTasks = async () => {
     try {
       const response = await axios.get('http://localhost:5000/tasks');
-      setTasks(response.data);
+      // Support both _id (old Mongo) and id (in-memory)
+      const normalized = response.data.map(task => ({
+        ...task,
+        id: task.id || task._id
+      }));
+      setTasks(normalized);
     } catch (error) {
       console.error('Error fetching tasks:', error);
     }
@@ -43,19 +48,19 @@ const TaskList = () => {
     <div className="task-list">
       {tasks.map(task => (
         <div 
-          key={task._id} 
+          key={task.id} 
           className={`task-item ${task.completed ? 'completed' : ''}`}
         >
           <span className="task-title">{task.title}</span>
           <div className="task-actions">
             <button 
-              onClick={() => handleToggle(task._id, task.completed)}
+              onClick={() => handleToggle(task.id, task.completed)}
               className="toggle-btn"
             >
               {task.completed ? 'Undo' : 'Complete'}
             </button>
             <button 
-              onClick={() => handleDelete(task._id)}
+              onClick={() => handleDelete(task.id)}
               className="delete-btn"
             >
               Delete

@@ -9,6 +9,7 @@ A full-stack To-Do List application built with a Node.js/Express backend (using 
 - Delete tasks
 - Responsive, mobile-friendly design
 - Strike-through effect for completed tasks
+- **Demo-ready:** Backend starts with a few dummy tasks so you can see the app working immediately.
 
 ## Tech Stack
 
@@ -30,12 +31,8 @@ todo-app/
 ├── backend/
 │   ├── server.js
 │   ├── package.json
-│   ├── config/
-│   │   └── database.js (not used, as storage is in-memory)
-│   ├── models/
-│   │   └── Task.js
-│   └── routes/
-│       └── tasks.js
+│   ├── routes/
+│   │   └── tasks.js
 └── frontend/
     ├── public/
     ├── src/
@@ -74,6 +71,8 @@ todo-app/
    ```
    The backend server will run on [http://localhost:5000](http://localhost:5000).
 
+   > **Note:** The backend starts with a few example tasks so you can see the app working right away.
+
 ### Frontend Setup
 
 1. Open a new terminal and navigate to the frontend directory:
@@ -111,6 +110,7 @@ todo-app/
    - Delete tasks using the delete button
    - Verify completed tasks have strike-through styling
    - Test responsive design on mobile devices
+   - **You will see some example tasks already present to demonstrate the app is working.**
 
 ## API Validation
 
@@ -130,3 +130,4 @@ todo-app/
 - **CORS:** Enabled for cross-origin requests.
 - **Frontend:** Includes error handling for API calls. Components are modular and reusable.
 - **Validation:** Backend validates that task titles are non-empty.
+- **Demo tasks:** The backend starts with a few dummy tasks for demonstration.
